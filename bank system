@@ -1,0 +1,32 @@
+def get_customer_details():
+    name = input("Enter customer name: ")
+    transaction = float(input("Enter transaction amount: "))
+    loan = float(input("Enter loan amount: "))
+    years = int(input("Enter loan period (years): "))
+    return name, transaction, loan, years
+
+def calculate_commission(transaction):
+    if transaction < 10000:
+        return transaction * 0.02
+    elif transaction <= 50000:
+        return transaction * 0.03
+    else:
+        return transaction * 0.05
+
+def calculate_monthly_repayment(loan, years):
+    total_with_interest = loan * 1.10  # add 10% interest
+    months = years * 12
+    return total_with_interest / months
+
+name, transaction, loan, years = get_customer_details()
+
+commission = calculate_commission(transaction)
+monthly_repayment = calculate_monthly_repayment(loan, years)
+
+print("\n--- Customer Financial Summary ---")
+print("Customer Name:", name)
+print("Transaction Amount:", transaction)
+print("Bank Commission:", commission)
+print("Loan Amount:", loan)
+print("Loan Period (Years):", years)
+print("Monthly Loan Repayment:", monthly_repayment)
